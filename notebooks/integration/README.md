@@ -1,7 +1,6 @@
 # Some Important Pieces Regarding Development of Notebooks
 - If you are making changes to the Adalflow library and want to ensure that those new changes are reflected in the notebooks, you must do the following:
 
-
 ## Delete the Dist Folder
 
 Ensure that you've deleted the existing `dist` folder at `adalflow/dist`
