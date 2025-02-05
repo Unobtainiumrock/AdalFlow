@@ -72,6 +72,8 @@ class OptionalPackages(Enum):
         "Please install Azure packages with: pip install azure-identity azure-core azure-ai-formrecognizer azure-ai-textanalytics",
     )
     TOGETHER = ("together", "Please install together with: pip install together")
+    MISTRAL = ("mistrali", "Please install mistralai with: pip install mistralai")
+
     # search library
     FAISS = (
         "faiss",
