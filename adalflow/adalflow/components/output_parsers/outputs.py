@@ -332,22 +332,22 @@ class ListOutputParser(OutputParser):
         return self.output_processors(input)
 
 
-def _parse_boolean_from_str(input: str) -> Optional[bool]:
-    input = input.strip()
-    if "true" in input.lower():
-        return True
-    elif "false" in input.lower():
-        return False
-    else:
-        return None
-
-
 class BooleanOutputParser(OutputParser):
     __doc__ = r"""Boolean output parser to parse boolean values from the string."""
 
     def __init__(self):
         super().__init__()
         self.output_processors = None
+
+    @staticmethod
+    def _parse_boolean_from_str(input: str) -> Optional[bool]:
+        input = input.strip()
+        if "true" in input.lower():
+            return True
+        elif "false" in input.lower():
+            return False
+        else:
+            return None
 
     def format_instructions(self) -> str:
         return "The output should be a boolean value. True or False."
@@ -362,10 +362,10 @@ class BooleanOutputParser(OutputParser):
             if isinstance(output, bool):
                 return output
             # go to string parsing
-            output = _parse_boolean_from_str(input)
+            output = self._parse_boolean_from_str(input)
             return output
         except Exception as e:
             # try to do regex matching for boolean values
             log.info(f"Error: {e}")
-            output = _parse_boolean_from_str(input)
+            output = self._parse_boolean_from_str(input)
             return output
